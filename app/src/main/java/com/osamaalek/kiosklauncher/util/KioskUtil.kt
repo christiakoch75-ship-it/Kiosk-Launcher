@@ -37,7 +37,19 @@ class KioskUtil {
                 devicePolicyManager.addPersistentPreferredActivity(myDeviceAdmin, filter, activity)
 
                 //
-                val appsWhiteList = arrayOf("com.osamaalek.kiosklauncher")
+               // Ersetze die alten Zeilen 35-36 in KioskUtil.kt durch diesen Block:
+val appsWhiteList = arrayOf(
+    "com.osamaalek.kiosklauncher",          // Dein Launcher
+    "de.spanset.zurrkraft",                 // Zurrechner (SpanSet)
+    "com.whatsapp",                         // WhatsApp (Standard)
+    "com.whatsapp.w4b",                     // WhatsApp Business (falls genutzt)
+    "com.samsung.android.dialer",           // Telefon (Samsung)
+    "com.android.server.telecom",           // Telefon-Systemdienst
+    "de.tisgmbh.tislog.mobile.vehicleCheck", // Abfahrkontrolle (TISLOG)
+    "com.google.android.apps.maps",         // Google Maps
+    "com.google.android.googlequicksearchbox" // Google App / Suche
+)
+devicePolicyManager.setLockTaskPackages(myDeviceAdmin, appsWhiteList)
                 devicePolicyManager.setLockTaskPackages(myDeviceAdmin, appsWhiteList)
 
                 devicePolicyManager.addUserRestriction(
